@@ -1,7 +1,6 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
-import { useStrict } from 'mobx';
 import { Provider } from 'mobx-react';
 
 import App from './components/App';

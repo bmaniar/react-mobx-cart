@@ -1,29 +1,24 @@
 import React from 'react';
-import { inject} from 'mobx-react';
+import { inject, observer} from 'mobx-react';
 
 @inject('cartStore')
-export default class ProductList extends React.Component {
+@observer
+export default class Cart extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          items: [{
-            id: 0,
-            name: "Buy milk"
-          }, {
-            id: 1,
-            name: "Write unit tests"
-          }, {
-            id: 2,
-            name: "Cook a meal"
-          }]
+          items: []
         }
         this.handleClick = this.handleClick.bind(this);
-      }
-  
+    }
+    ComponentWillMount(){
+        var items = this.props.cartStore.fetchCart();
+        this.setState({ items: items });
+    }
     handleClick = e => {
-        this.props.cartStore.addToCart(e);    
+        this.props.cartStore.removeFromCart(e);    
     } 
-    renderProducts() {
+    renderTodos() {
         return this.state.items.map((item, idx) => {
             return (<li  key = {idx} >
                 {item.name} 
@@ -34,9 +29,9 @@ export default class ProductList extends React.Component {
     render() {
         return (
         <div>
-            <h2>Product List</h2>
+            <h2>Cart</h2>
             <ul>
-                {this.renderProducts()}
+                {this.renderTodos()}
             </ul>
         </div>
         );

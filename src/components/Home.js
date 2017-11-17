@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 
 import TitleBar from './TitleBar';
 import ProductList from './ProductList';
-
+import Cart from './Cart';
 @inject('cartStore')
 @observer
 export default class Home extends React.Component {
@@ -15,6 +15,7 @@ export default class Home extends React.Component {
       >Add to Cart</button> */}
       <TitleBar/>
       <ProductList/>
+      <Cart/>
       </div>
     );
   }

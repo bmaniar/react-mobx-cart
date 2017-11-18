@@ -1,1 +1,3 @@
-# react-mobx-cart
+# React Mobx Shopping Cart Example
+
+###

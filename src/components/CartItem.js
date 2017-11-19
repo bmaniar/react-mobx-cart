@@ -17,10 +17,17 @@ export default class CartItem extends React.Component {
     render() {
         let {item}= this.props;
         return (
-            <li>
-                {item.name} 
-                <button onClick = {() => this.handleClick(item)} > Remove </button>
-            </li>
+            <tr>
+                <td>
+                    {item.name} 
+                </td>
+                <td>
+                    {item.price}
+                </td>
+                <td>
+                    <button onClick = {() => this.handleClick(item)} > Remove </button>
+                </td>
+            </tr>
         );
     }
 }

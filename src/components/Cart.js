@@ -18,13 +18,26 @@ export default class Cart extends React.Component {
         return (
         <div>
             <h2>Cart</h2>
-            <ul>
-               {
-                   this.state.items.map((item, idx) => {
-                    return (<CartItem item={item} key={idx}/>)
-                })
-               }
-            </ul>
+            <table>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+                {
+                    this.state.items.map((item, idx) => {
+                        return (<CartItem item={item} key={idx}/>)
+                    })
+                }
+            <tr>
+                <th>
+                    Total Amount
+                </th>
+                <th>
+                    {this.props.cartStore.totalAmount}
+                </th>
+            </tr>
+            </table>
         </div>
         );
     }

@@ -8,13 +8,16 @@ export default class ProductList extends React.Component {
         this.state = {
           items: [{
             id: 0,
-            name: "Buy milk"
+            name: "Buy milk",
+            price: 200
           }, {
             id: 1,
-            name: "Write unit tests"
+            name: "Write unit tests",
+            price: 1000
           }, {
             id: 2,
-            name: "Cook a meal"
+            name: "Cook a meal",
+            price: 500
           }]
         }
         this.handleClick = this.handleClick.bind(this);
@@ -25,19 +28,25 @@ export default class ProductList extends React.Component {
     } 
     renderProducts() {
         return this.state.items.map((item, idx) => {
-            return (<li  key = {idx} >
-                {item.name} 
+            return (<tr>
+                <td  key = {idx} >
+                {item.name} </td><td>{item.price}</td><td>
                 <button onClick = {() => this.handleClick(item)} > Add to Cart </button>
-            </li>)
+            </td></tr>)
         })
     } 
     render() {
         return (
         <div>
             <h2>Product List</h2>
-            <ul>
+            <table>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Action</th>
+                </tr>
                 {this.renderProducts()}
-            </ul>
+            </table>
         </div>
         );
     }

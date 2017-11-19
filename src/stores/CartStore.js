@@ -6,6 +6,13 @@ class CartStore {
     @computed get count() {
         return this.productsInCart.length;
     }
+    @computed get totalAmount() {
+        let total = 0;
+        for (let item of this.productsInCart) {
+          total = total + (item.price)
+        }
+        return total;
+    }
     @action.bound
     addToCart(product) {
         this.productsInCart.push(product);
